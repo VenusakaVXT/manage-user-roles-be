@@ -3,4 +3,11 @@ const handleRender = (req, res) => {
     return res.render('test.ejs', { myName })
 }
 
-module.exports = handleRender
+const handleUsers = (req, res) => {
+    return res.render('user.ejs')
+}
+
+module.exports = {
+    handleRender, 
+    handleUsers
+}
