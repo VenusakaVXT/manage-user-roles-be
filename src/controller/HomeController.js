@@ -5,8 +5,10 @@ const handleRender = (req, res) => {
     return res.render('home.ejs', { myName })
 }
 
-const handleUsers = (req, res) => {
-    return res.render('user.ejs')
+const handleUsers = async (req, res) => {
+    // Log list user
+    let lstUser = await userService.getListUsers()
+    return res.render('user.ejs', {lstUser})
 }
 
 const handleCreateNewUser = (req, res) => {
@@ -15,9 +17,6 @@ const handleCreateNewUser = (req, res) => {
     let password = req.body.password
     
     userService.createNewUser(email, username, password)
-
-    // Log list user
-    userService.getListUsers()
 
     return res.send('Add User...')
 }
