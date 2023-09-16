@@ -1,12 +1,4 @@
-import mySql from 'mysql2'
-import { user, password } from '../connect/connect'
-
-const connection = mySql.createConnection({
-    host: 'localhost',
-    user: user,
-    password: password,
-    database: 'role_management'
-})
+import userService from '../service/userService'
 
 const handleRender = (req, res) => {
     const myName = 'VENUS'
@@ -21,18 +13,11 @@ const handleCreateNewUser = (req, res) => {
     let email = req.body.email
     let username = req.body.username
     let password = req.body.password
+    
+    userService.createNewUser(email, username, password)
 
-    // Get data
-    connection.query(
-        'INSERT INTO users(email, username, password) VALUES(?, ?, ?)',
-        [email, username, password],
-        function (err, results, fields) {
-            if (err) {
-                console.error(err)
-            }
-            console.log(results)
-        }
-    )
+    // Log list user
+    userService.getListUsers()
 
     return res.send('Add User...')
 }
