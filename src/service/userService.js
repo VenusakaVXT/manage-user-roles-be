@@ -66,7 +66,28 @@ const getListUsers = async () => {
     }
 }
 
+const deleteUser = async (id) => {
+    const connection = await mySql.createConnection({
+        host: 'localhost',
+        user: user,
+        password: password,
+        database: 'role_management',
+        Promise: bluebird
+    })
+
+    // Delete data
+    try {
+        const [rows, fields] = await connection.execute(
+            'DELETE FROM users WHERE id=?',
+            [id]
+        )
+    } catch (err) {
+        console.error(err)
+    }
+}
+
 module.exports = {
     createNewUser,
-    getListUsers
+    getListUsers,
+    deleteUser
 }

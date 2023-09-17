@@ -20,8 +20,14 @@ const handleCreateNewUser = async (req, res) => {
     return res.redirect('/users')
 }
 
+const handleDeleteUser = async (req, res) => {
+    await userService.deleteUser(req.params.id)
+    return res.redirect('/users')
+}
+
 module.exports = {
     handleRender,
     handleUsers,
-    handleCreateNewUser
+    handleCreateNewUser,
+    handleDeleteUser
 }
