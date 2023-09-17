@@ -11,14 +11,13 @@ const handleUsers = async (req, res) => {
     return res.render('user.ejs', {lstUser})
 }
 
-const handleCreateNewUser = (req, res) => {
+const handleCreateNewUser = async (req, res) => {
     let email = req.body.email
     let username = req.body.username
     let password = req.body.password
     
     userService.createNewUser(email, username, password)
-
-    return res.send('Add User...')
+    return res.redirect('/users')
 }
 
 module.exports = {

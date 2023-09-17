@@ -10,20 +10,26 @@ const hashPassword = (userPassword) => {
     return bcrypt.hashSync(userPassword, salt)
 }
 
-const createNewUser = (email, username, password) => {
-    let hashUserPassword = hashPassword(password)
+const createNewUser = async (email, username, pass) => {
+    let hashUserPassword = hashPassword(pass)
+
+    const connection = await mySql.createConnection({
+        host: 'localhost',
+        user: user,
+        password: password,
+        database: 'role_management',
+        Promise: bluebird
+    })
 
     // Insert data
-    connection.query(
-        'INSERT INTO users(email, username, password) VALUES(?, ?, ?)',
-        [email, username, hashUserPassword],
-        function (err, results, fields) {
-            if (err) {
-                console.error(err)
-            }
-            console.log(results)
-        }
-    )
+    try {
+        const [rows, fields] = await connection.execute(
+            'INSERT INTO users(email, username, password) VALUES(?, ?, ?)',
+            [email, username, hashUserPassword]
+        )
+    } catch (err) {
+        console.error(err)
+    }
 }
 
 // Instead of executing the callback async, we execute each command line sync
@@ -37,9 +43,9 @@ const getListUsers = async () => {
         Promise: bluebird
     })
 
-    let users = []
-
     // Get data
+    // let users = []
+
     // connection.query(
     //     'SELECT * FROM users',
     //     function (err, results, fields) {
