@@ -31,7 +31,7 @@
                         <label for="password" class="form-label">Password</label>
                         <input type="password" class="form-control" id="password" name="password" required>
                     </div>
-                    <button type="submit" class="btn btn-success mt-1">Submit</button>
+                    <button type="submit" class="btn btn-success mt-1">Create</button>
                 </form>
 
             </div>
@@ -55,7 +55,9 @@
                                 <td><%= item.username %></td>
                                 <td><%= item.email %></td>
                                 <td>
-                                    <button class="btn btn-warning">Edit</button>
+                                    <a class="btn btn-warning" href="/update-user/<%=item.id%>">
+                                        Edit
+                                    </a>
                                     <form style="display: inline" method="POST" action="/delete-user/<%=item.id%>">
                                         <button class="btn btn-danger" type="submit">Delete</button>
                                     </form>
