@@ -24,7 +24,7 @@ const createNewUser = async (email, username, pass) => {
     // Insert data
     try {
         const [rows, fields] = await connection.execute(
-            'INSERT INTO users(email, username, password) VALUES(?, ?, ?)',
+            'INSERT INTO users(email, username, password, createdAt, updatedAt) VALUES(?, ?, ?, ?, ?)',
             [email, username, hashUserPassword]
         )
     } catch (err) {
