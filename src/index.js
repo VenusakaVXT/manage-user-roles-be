@@ -2,7 +2,7 @@ import express from 'express'
 import configViewEngine from './config/viewEngine'
 import initWebRoutes from './routes/web'
 import bodyParser from 'body-parser'
-import connection from './config/connectDB'
+// import connection from './config/connectDB'
 require('dotenv').config()
 
 const app = express()
@@ -19,7 +19,7 @@ app.use(bodyParser.urlencoded({ extended: true }))
 initWebRoutes(app)
 
 // Test connection
-connection()
+// connection()
 
 app.listen(PORT, () => {
     console.log(`Run project on url localhost:${PORT}`)
