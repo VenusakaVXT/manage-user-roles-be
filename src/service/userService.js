@@ -117,6 +117,14 @@ const deleteUser = async (id) => {
 }
 
 const getUserInfoById = async (id) => {
+    let users = {}
+    users = await db.Users.findOne({
+        where: { id }
+    })
+    return users
+
+    /*
+    // Cmt back to the old one when not using ORM
     const connection = await mySql.createConnection({
         host: 'localhost',
         user: user,
@@ -134,9 +142,16 @@ const getUserInfoById = async (id) => {
     } catch (err) {
         console.error(err)
     }
+    */
 }
 
 const updateUserInfo = async (email, username, id) => {
+    await db.Users.update({ email, username }, {
+        where: { id }
+    })
+
+    /*
+    // Cmt back to the old one when not using ORM
     const connection = await mySql.createConnection({
         host: 'localhost',
         user: user,
@@ -154,6 +169,7 @@ const updateUserInfo = async (email, username, id) => {
     } catch (err) {
         console.error(err)
     }
+    */
 }
 
 module.exports = {
