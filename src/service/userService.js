@@ -90,6 +90,12 @@ const getListUsers = async () => {
 }
 
 const deleteUser = async (id) => {
+    await db.Users.destroy({
+        where: { id }
+    })
+
+    /*
+    // Cmt back to the old one when not using ORM
     const connection = await mySql.createConnection({
         host: 'localhost',
         user: user,
@@ -107,6 +113,7 @@ const deleteUser = async (id) => {
     } catch (err) {
         console.error(err)
     }
+    */
 }
 
 const getUserInfoById = async (id) => {
