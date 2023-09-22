@@ -14,6 +14,26 @@ const hashPassword = (userPassword) => {
 const createNewUser = async (email, username, pass) => {
     let hashUserPassword = hashPassword(pass)
 
+    /*
+    // Cmt back to the old one when not using ORM
+    const connection = await mySql.createConnection({
+        host: 'localhost',
+        user: user,
+        password: password,
+        database: 'role_management',
+        Promise: bluebird
+    })
+
+    try {
+        const [rows, fields] = await connection.execute(
+            'INSERT INTO users(email, username, password, createdAt, updatedAt) VALUES(?, ?, ?, ?, ?)',
+            [email, username, hashUserPassword, new Date(), new Date()]
+        )
+    } catch (err) {
+        console.error(err)
+    }
+    */
+
     // Insert data
     try {
         await db.Users.create({
@@ -28,7 +48,12 @@ const createNewUser = async (email, username, pass) => {
 
 // Instead of executing the callback async, we execute each command line sync
 const getListUsers = async () => {
+    let users = []
+    users = await db.Users.findAll()
+    return users
+
     // create the connection, specify bluebird as Promise
+    /*
     const connection = await mySql.createConnection({
         host: 'localhost',
         user: user,
@@ -36,8 +61,9 @@ const getListUsers = async () => {
         database: 'role_management',
         Promise: bluebird
     })
+    */
 
-    // Get data
+    // Get data old
     // let users = []
 
     // connection.query(
@@ -52,12 +78,15 @@ const getListUsers = async () => {
     //     }
     // )
 
+    /*
+    // Cmt back to the old one when not using ORM
     try {
         const [rows, fields] = await connection.execute('SELECT * FROM users')
         return rows
     } catch (err) {
         console.error(err)
     }
+    */
 }
 
 const deleteUser = async (id) => {
