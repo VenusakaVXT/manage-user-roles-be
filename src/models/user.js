@@ -10,6 +10,10 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
+      // Relationship 1..1
+      Users.belongsTo(models.Group)
+      // Relationship n..n
+      Users.belongsToMany(models.Project, { through: 'ProjectUser' })
     }
   }
   Users.init({

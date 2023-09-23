@@ -48,6 +48,29 @@ const createNewUser = async (email, username, pass) => {
 
 // Instead of executing the callback async, we execute each command line sync
 const getListUsers = async () => {
+    // Test relationship
+    let newUser = await db.Users.findOne({
+        where: { id: 1 },
+        attributes: ['id', 'username', 'email'],
+        include: {
+            model: db.Group,
+            attributes: ['name', 'description'],
+        },
+        raw: true,
+        nest: true
+    })
+
+    let roles = await db.Role.findAll({
+        include: { 
+            model: db.Group, 
+            where: { id: 1 }
+        },
+        raw: true,
+        nest: true
+    })
+
+    console.log(newUser, roles)
+
     let users = []
     users = await db.Users.findAll()
     return users
