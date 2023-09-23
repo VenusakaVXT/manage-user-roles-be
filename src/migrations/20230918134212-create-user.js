@@ -18,6 +18,18 @@ module.exports = {
       password: {
         type: Sequelize.STRING
       },
+      gender: {
+        type: Sequelize.STRING
+      },
+      address: {
+        type: Sequelize.STRING
+      },
+      numPhone: {
+        type: Sequelize.STRING
+      },
+      groupId: {
+        type: Sequelize.INTEGER
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE
