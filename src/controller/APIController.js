@@ -5,6 +5,11 @@ const mockApi = (req, res) => {
     })
 }
 
+const handleRegister = (req, res) => {
+    console.log('check: ', req.body)
+}
+
 module.exports = {
-    mockApi
+    mockApi,
+    handleRegister
 }
