@@ -43,15 +43,25 @@ const handleRegister = async (req, res) => {
 }
 
 const handleLogin = async (req, res) => {
-    console.log('Check login form React: ', req.body)
-    return await res.status(200).json({
-        message: 'OK',
-        data: 'test api login'
-    })
+    try {
+        let dataLogin = await registerLoginService.handleUserLogin(req.body)
+
+        return await res.status(200).json({
+            errMessage: dataLogin.errMessage,
+            errCode: dataLogin.errCode,
+            data: dataLogin.data
+        })
+    } catch {
+        return res.status(500).json({
+            errMessage: 'Error from server...',
+            errCode: '-1',
+            data: ''
+        })
+    }
 }
 
 module.exports = {
     mockApi,
-    handleRegister, 
+    handleRegister,
     handleLogin
 }
