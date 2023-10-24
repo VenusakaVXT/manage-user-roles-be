@@ -1,2 +1,2 @@
-# User Role Management Application Backend
-User Role Management Application with NodeJS, MySQL &amp; JWT
+# URM Application Backend
+URM (User Role Management) Application with NodeJS, MySQL &amp; JWT
