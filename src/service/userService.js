@@ -57,7 +57,7 @@ const getListUsers = async () => {
             attributes: ['name', 'description'],
         },
         raw: true,
-        nest: true
+        nest: true // Group the properties extracted from the Group table into an Obj
     })
 
     let roles = await db.Role.findAll({
