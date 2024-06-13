@@ -1,22 +1,22 @@
-import db from '../models/index'
+import db from "../models/index"
 
 const getAllUsers = async () => {
     try {
         let users = await db.Users.findAll({
             attributes: ["id", "username", "email", "numPhone", "gender"],
-            include: { model: db.Group, attributes: ["name", "description"]}
+            include: { model: db.Group, attributes: ["name", "description"] }
         })
 
         if (users) {
             // let data = users.get({ plain: true })
             return {
-                errMessage: 'Get data success...',
+                errMessage: "Get data success...",
                 errCode: 0,
                 data: users
             }
         } else {
             return {
-                errMessage: 'Get data success...',
+                errMessage: "Get data success...",
                 errCode: 0,
                 data: []
             }
@@ -24,17 +24,17 @@ const getAllUsers = async () => {
     } catch (err) {
         console.error(err)
         return {
-            errMessage: 'Something wrongs with service...',
+            errMessage: "Something wrongs with service...",
             errCode: 1,
             data: []
         }
     }
 }
 
-const createNewUser = async (data) => {
+const createNewUser = async () => {
     try {
         await db.Users.create()
-    } catch(err) {
+    } catch (err) {
         console.error(err)
     }
 }
@@ -46,15 +46,11 @@ const updateUser = async (data) => {
         })
 
         if (user) {
-            // update user
-            
-            user.save({
-
-            })
+            user.save({})
         } else {
-            // not found user
+            console.log("not found user...")
         }
-    } catch(err) {
+    } catch (err) {
         console.error(err)
     }
 }
@@ -62,9 +58,9 @@ const updateUser = async (data) => {
 const deleteUser = async (id) => {
     try {
         await db.Users.delete({
-            where: {id}
+            where: { id }
         })
-    } catch(err) {
+    } catch (err) {
         console.error(err)
     }
 }

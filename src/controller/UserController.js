@@ -1,4 +1,4 @@
-import userAPIService from '../service/userAPIService'
+import userAPIService from "../service/userAPIService"
 
 const read = async (req, res) => {
     try {
@@ -12,9 +12,9 @@ const read = async (req, res) => {
     } catch (err) {
         console.error(err)
         return res.status(500).json({
-            errMessage: 'Error from server...',
-            errCode: '-1',  
-            data: ''
+            errMessage: "Error from server...",
+            errCode: "-1",
+            data: ""
         })
     }
 }
@@ -25,9 +25,9 @@ const create = async (req, res) => {
     } catch (err) {
         console.error(err)
         return res.status(500).json({
-            errMessage: 'Error from server...',
-            errCode: '-1',
-            data: ''
+            errMessage: "Error from server...",
+            errCode: "-1",
+            data: ""
         })
     }
 }
@@ -38,9 +38,9 @@ const update = (req, res) => {
     } catch (err) {
         console.error(err)
         return res.status(500).json({
-            errMessage: 'Error from server...',
-            errCode: '-1',
-            data: ''
+            errMessage: "Error from server...",
+            errCode: "-1",
+            data: ""
         })
     }
 }
@@ -51,9 +51,9 @@ const deleted = (req, res) => {
     } catch (err) {
         console.error(err)
         return res.status(500).json({
-            errMessage: 'Error from server...',
-            errCode: '-1',
-            data: ''
+            errMessage: "Error from server...",
+            errCode: "-1",
+            data: ""
         })
     }
 }

@@ -1,26 +1,26 @@
-'use strict'
+"use strict"
 
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    await queryInterface.bulkInsert('Users', [
+    await queryInterface.bulkInsert("Users", [
       {
-        email: 'John Doe1',
-        username: 'fake1',
-        password: '111',
+        email: "venusversion1@gmail.com",
+        username: "Venus version1",
+        password: "111",
         createdAt: new Date(),
         updatedAt: new Date()
       },
       {
-        email: 'John Doe2',
-        username: 'fake2',
-        password: '222',
+        email: "venusversion2@gmail.com",
+        username: "Venus version2",
+        password: "222",
         createdAt: new Date(),
         updatedAt: new Date()
       },
       {
-        email: 'John Doe3',
-        username: 'fake3',
-        password: '333',
+        email: "venusversion3@gmail.com",
+        username: "Venus version3",
+        password: "333",
         createdAt: new Date(),
         updatedAt: new Date()
       }
@@ -28,6 +28,6 @@ module.exports = {
   },
 
   down: async (queryInterface, Sequelize) => {
-    // await queryInterface.bulkDelete('People', null, {})
+    // await queryInterface.bulkDelete("People", null, {})
   }
 }
